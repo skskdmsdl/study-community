@@ -2543,7 +2543,7 @@ progress {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1;
     color: #402B2B;
     background-color: #F5F5F5;
     background-clip: padding-box;
@@ -13405,6 +13405,7 @@ fieldset:disabled .btn {
         -webkit-box-ordinal-group: 1 !important;
         -ms-flex-order: 0 !important;
         order: 0 !important;
+        font-size: smaller;
     }
     .order-lg-1 {
         -webkit-box-ordinal-group: 2 !important;
