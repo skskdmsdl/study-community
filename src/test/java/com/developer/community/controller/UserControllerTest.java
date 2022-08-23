@@ -43,12 +43,13 @@ class UserControllerTest {
                 .andExpect(view().name("user/join"));   // view 이름 테스트
     }
 
+    @DisplayName("[view][POST] 회원가입 api")
     @Test
     public void 회원가입() throws Exception {
         String userName = "userName";
         String password = "password";
 
-        when(userService.join()).thenReturn(mock(User.class));
+        when(userService.join(userName, password)).thenReturn(mock(User.class));
 
         mockMvc.perform(post("/user/join")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -62,12 +63,57 @@ class UserControllerTest {
         String userName = "userName";
         String password = "password";
 
-        when(userService.join()).thenThrow(new CommunityApplicationException());
+        when(userService.join(userName, password)).thenThrow(new CommunityApplicationException());
 
         mockMvc.perform(post("/user/join")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsBytes(new UserJoinRequest(userName, password)))
                 ).andDo(print())
                 .andExpect(status().isConflict());
+    }
+
+    @DisplayName("[view][POST] 로그인 api")
+    @Test
+    public void 로그인() throws Exception {
+        String userName = "userName";
+        String password = "password";
+
+        when(userService.login(userName, password)).thenReturn("test_token");
+
+        mockMvc.perform(post("/user/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsBytes(new UserJoinRequest(userName, password)))
+                ).andDo(print())
+                .andExpect(status().isOk());
+    }
+
+    @DisplayName("[view][POST] 로그인 시 가입이 안된 userName 입력 - 에러 반환")
+    @Test
+    public void 로그인시_회원가입이_안된_userName을_입력할경우_에러반환() throws Exception {
+        String userName = "userName";
+        String password = "password";
+
+        when(userService.login(userName, password)).thenThrow(new CommunityApplicationException());
+
+        mockMvc.perform(post("/user/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsBytes(new UserJoinRequest(userName, password)))
+                ).andDo(print())
+                .andExpect(status().isNotFound());
+    }
+
+    @DisplayName("[view][POST] 로그인시 틀린 password 입력 - 에러 반환")
+    @Test
+    public void 로그인시_틀린_password를_입력할경우_에러반환() throws Exception {
+        String userName = "userName";
+        String password = "password";
+
+        when(userService.login(userName, password)).thenThrow(new CommunityApplicationException());
+
+        mockMvc.perform(post("/user/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsBytes(new UserJoinRequest(userName, password)))
+                ).andDo(print())
+                .andExpect(status().isUnauthorized());
     }
 }

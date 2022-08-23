@@ -20,6 +20,6 @@ public class UserController {
     @PostMapping("/join")
     public void join(@RequestBody UserJoinRequest request) {
         // join
-        userService.join();
+        userService.join("", "");
     }
 }
