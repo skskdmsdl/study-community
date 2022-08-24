@@ -2,6 +2,7 @@ package com.developer.community.controller;
 
 import com.developer.community.controller.request.UserJoinRequest;
 import com.developer.community.exception.CommunityApplicationException;
+import com.developer.community.exception.ErrorCode;
 import com.developer.community.model.User;
 import com.developer.community.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -63,7 +64,7 @@ class UserControllerTest {
         String userName = "userName";
         String password = "password";
 
-        when(userService.join(userName, password)).thenThrow(new CommunityApplicationException());
+        when(userService.join(userName, password)).thenThrow(new CommunityApplicationException(ErrorCode.DUPLICATED_USER_NAME, ""));
 
         mockMvc.perform(post("/user/join")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -93,7 +94,7 @@ class UserControllerTest {
         String userName = "userName";
         String password = "password";
 
-        when(userService.login(userName, password)).thenThrow(new CommunityApplicationException());
+        when(userService.login(userName, password)).thenThrow(new CommunityApplicationException(ErrorCode.USER_NOT_FOUND, ""));
 
         mockMvc.perform(post("/user/login")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -108,7 +109,7 @@ class UserControllerTest {
         String userName = "userName";
         String password = "password";
 
-        when(userService.login(userName, password)).thenThrow(new CommunityApplicationException());
+        when(userService.login(userName, password)).thenThrow(new CommunityApplicationException(ErrorCode.INVALID_PASSWORD, ""));
 
         mockMvc.perform(post("/user/login")
                         .contentType(MediaType.APPLICATION_JSON)

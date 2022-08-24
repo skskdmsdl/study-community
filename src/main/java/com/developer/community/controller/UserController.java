@@ -1,6 +1,9 @@
 package com.developer.community.controller;
 
 import com.developer.community.controller.request.UserJoinRequest;
+import com.developer.community.controller.response.Response;
+import com.developer.community.controller.response.UserJoinResponse;
+import com.developer.community.model.User;
 import com.developer.community.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +21,9 @@ public class UserController {
     }
 
     @PostMapping("/join")
-    public void join(@RequestBody UserJoinRequest request) {
+    public Response<UserJoinResponse> join(@RequestBody UserJoinRequest request) {
         // join
-        userService.join("", "");
+        User user = userService.join(request.getUserName(), request.getPassword());
+        return Response.success(UserJoinResponse.fromUser(user));
     }
 }
