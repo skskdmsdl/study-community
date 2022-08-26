@@ -6,5 +6,12 @@ spring.jpa:
     hibernate.format_sql: true
   show-sql: true
 
+spring.datasource:
+  hikari.maximum-pool-size: 4
+  url: jdbc:postgresql://ec2-34-227-135-211.compute-1.amazonaws.com/dc17li9ac25m5t
+  username: pdijyvreepmauu
+  password: c5052b72fd5c4260deb96c377c61955dae11852c80a6c7685cafa19cd0e83a66
+  driver-class-name: org.postgresql.Driver
+
 spring:
   thymeleaf3.decoupled-logic: true
