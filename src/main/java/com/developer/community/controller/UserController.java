@@ -7,6 +7,7 @@ import com.developer.community.model.User;
 import com.developer.community.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/user")
@@ -16,8 +17,10 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping("/join")
-    public String join() {
-        return "user/join";
+    public ModelAndView join() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("user/join");
+        return mv;
     }
 
     @PostMapping("/join")
