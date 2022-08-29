@@ -2,4 +2,9 @@
 <thlogic>
     <attr sel="#header" th:replace="header :: header" />
     <attr sel="#footer" th:replace="footer :: footer" />
+
+    <attr sel="#join-form" th:action="@{/user/join}" th:method="post">
+        <attr sel="#join-id" th:name="userName"/>
+        <attr sel="#password" th:name="password"/>
+    </attr>
 </thlogic>
