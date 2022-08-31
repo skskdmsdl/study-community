@@ -5,15 +5,13 @@
 // }
 
 function checkPassword(){
-    let password = document.querySelector("#password").value;
-    let passwordCheck = document.querySelector("#password-check").value;
+    let password = $("#password").val();
+    let passwordCheck = $("#password-check").val();
     let num = password.search(/[0-9]/g);
     let eng = password.search(/[a-z]/ig);
     let spec = password.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
 
-
     if(password.length < 8 || password.length > 20){
-
         alert("8자리 ~ 20자리 이내로 입력해주세요.");
         return false;
     }else if(password.search(/\s/) != -1){
