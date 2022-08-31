@@ -36,7 +36,7 @@ public class UserService {
         UserEntity userEntity = userEntityRepository.findByUserName(userName).orElseThrow(() -> new CommunityApplicationException(ErrorCode.USER_NOT_FOUND, String.format("%s not founded", userName)));
 
         // 비밀번호 체크
-        if(!userEntity.getPassword().equals(password)) {
+        if(!encoder.matches(password, userEntity.getPassword())) {
             throw new CommunityApplicationException(ErrorCode.INVALID_PASSWORD, "");
         }
 
