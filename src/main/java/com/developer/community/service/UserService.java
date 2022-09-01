@@ -5,7 +5,9 @@ import com.developer.community.exception.ErrorCode;
 import com.developer.community.model.User;
 import com.developer.community.model.entity.UserEntity;
 import com.developer.community.repository.UserEntityRepository;
+import com.developer.community.util.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,12 @@ public class UserService {
     private final UserEntityRepository userEntityRepository;
     private final BCryptPasswordEncoder encoder;
 
+    @Value("${jwt.secret-key}")
+    private String secretKey;
+
+    @Value("${jwt.token.expired-time-ms}")
+    private Long expiredTimeMs;
+
     @Transactional
     public User join(String userName, String password) {
         // 회원가입하려는 userName으로 user가 있는지 확인
@@ -28,20 +36,21 @@ public class UserService {
         
         // 회원가입 진행 = user를 등록
         UserEntity userEntity = userEntityRepository.save(UserEntity.of(userName, encoder.encode(password)));
-        
         return User.fromEntity(userEntity);
     }
+
     public String login(String userName, String password) {
         // 회원가입 여부 체크(값이 있는 경우 userEntity를 받아오고, 없는 경우 exception throw)
         UserEntity userEntity = userEntityRepository.findByUserName(userName).orElseThrow(() -> new CommunityApplicationException(ErrorCode.USER_NOT_FOUND, String.format("%s not founded", userName)));
 
         // 비밀번호 체크
         if(!encoder.matches(password, userEntity.getPassword())) {
-            throw new CommunityApplicationException(ErrorCode.INVALID_PASSWORD, "");
+            throw new CommunityApplicationException(ErrorCode.INVALID_PASSWORD);
         }
 
         // 토큰 생성
+        String token = JwtTokenUtils.generateToken(userName, secretKey, expiredTimeMs);
 
-        return "";
+        return token;
     }
 }
