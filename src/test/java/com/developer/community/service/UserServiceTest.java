@@ -37,7 +37,7 @@ public class UserServiceTest {
         // mocking
         when(userEntityRepository.findByUserName(userName)).thenReturn(Optional.empty());
         when(encoder.encode(password)).thenReturn("encrypt_password");
-        when(userEntityRepository.save(any())).thenReturn(Optional.of(UserEntityFixture.get(userName, password, 1)));
+        when(userEntityRepository.save(any())).thenReturn(UserEntityFixture.get(userName, password, 1));
 
         Assertions.assertDoesNotThrow(() -> userService.join(userName, password));
     }
@@ -66,6 +66,7 @@ public class UserServiceTest {
 
         // mocking
         when(userEntityRepository.findByUserName(userName)).thenReturn(Optional.of(fixture));
+        when(encoder.matches(password, fixture.getPassword())).thenReturn(true);
 
         Assertions.assertDoesNotThrow(() -> userService.login(userName, password));
     }
