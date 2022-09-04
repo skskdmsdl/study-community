@@ -8,23 +8,15 @@ import com.developer.community.controller.response.UserLoginResponse;
 import com.developer.community.model.User;
 import com.developer.community.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
-public class UserController {
+public class RestUserController {
 
     private final UserService userService;
 
-    @GetMapping("/join")
-    public String join() {
-        return "user/join";
-    }
-
-    @ResponseBody
     @PostMapping("/join")
     public Response<UserJoinResponse> join(@RequestBody UserJoinRequest request) {
         // join
@@ -32,7 +24,6 @@ public class UserController {
         return Response.success(UserJoinResponse.fromUser(user));
     }
 
-    @ResponseBody
     @PostMapping("/login")
     public Response<UserLoginResponse> login(@RequestBody UserLoginRequest request){
         String token = userService.login(request.getUserName(), request.getPassword());
