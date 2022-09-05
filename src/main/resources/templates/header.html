@@ -41,7 +41,7 @@
                     <li class="nav-item"><input id="login-id" class="form-control me-2" type="text" placeholder="아이디" /></li>
                     <li class="nav-item px-2"><input id="login-password" class="form-control me-2" type="password" placeholder="비밀번호" /></li>
                 </ul>
-                <a class="btn btn-primary order-1 order-lg-0 bg-100 me-lg-2" onclick="login()">로그인</a>
+                <a class="btn btn-primary order-1 order-lg-0 bg-100 me-lg-2" id="login-btn">로그인</a>
                 <a class="btn btn-primary order-1 order-lg-0" id="join">회원가입</a>
                 <form class="d-flex my-3 d-block d-lg-none">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
@@ -60,23 +60,5 @@
     </nav>
 </header>
 
-<script>
-function login() {
-    const headers = {
-        "Content-Type" : "application/json",
-        "X-HTTP-Method-Override" : "POST"
-    };
-    const loginInfo = JSON.stringify({
-       userName:$("#login-id").val(),
-       password:$("#password").val()
-    });
-
-    $.ajax({
-       type: "POST",
-       url: "user/login",
-       data: loginInfo
-    })
-}
-</script>
 </body>
 </html>
