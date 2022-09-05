@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @DisplayName("View 컨트롤러")
 @SpringBootTest
 @AutoConfigureMockMvc
-class UserControllerTest {
+class RestUserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
