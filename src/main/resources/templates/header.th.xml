@@ -1,4 +1,14 @@
 <?xml version="1.0"?>
 <thlogic>
-    <attr sel="#join" th:href="@{/user/join}" />
+    <attr sel="#home" th:href="@{/}" />
+    <attr sel="#login-btn" sec:authorize="!isAuthenticated()" />
+    <attr sel="#join" sec:authorize="!isAuthenticated()" th:href="@{/user/join}" />
+    <attr sel="#logout" sec:authorize="isAuthenticated()" th:href="@{/user/logout}" />
+
+    <attr sel="#join-form" th:action="@{/user/login}" th:method="post">
+        <attr sel="#login-id" th:name="userName" />
+        <attr sel="#login-password" th:name="password" />
+        <attr sel="#login-btn" />
+    </attr>
+
 </thlogic>

@@ -9,6 +9,7 @@ import com.developer.community.model.User;
 import com.developer.community.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequestMapping("/user")
@@ -25,8 +26,19 @@ public class RestUserController {
     }
 
     @PostMapping("/login")
-    public Response<UserLoginResponse> login(@RequestBody UserLoginRequest request){
+    public ModelAndView login(@RequestBody UserLoginRequest request){
+        ModelAndView mav = new ModelAndView();
         String token = userService.login(request.getUserName(), request.getPassword());
-        return Response.success(new UserLoginResponse(token));
+        Response.success(new UserLoginResponse(token));
+
+        mav.addObject("token", token);
+        mav.setViewName("redirect:/studies");
+        return mav;
     }
+
+//    @PostMapping("/login")
+//    public Response<UserLoginResponse> login(@RequestBody UserLoginRequest request){
+//        String token = userService.login(request.getUserName(), request.getPassword());
+//        return Response.success(new UserLoginResponse(token));
+//    }
 }
