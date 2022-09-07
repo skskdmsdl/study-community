@@ -5,10 +5,9 @@
     <attr sel="#join" sec:authorize="!isAuthenticated()" th:href="@{/user/join}" />
     <attr sel="#logout" sec:authorize="isAuthenticated()" th:href="@{/user/logout}" />
 
-    <attr sel="#join-form" th:action="@{/user/login}" th:method="post">
+    <attr sel="#login-form" th:action="@{/user/login}" th:method="post">
         <attr sel="#login-id" th:name="userName" />
         <attr sel="#login-password" th:name="password" />
-        <attr sel="#login-btn" />
     </attr>
 
 </thlogic>
