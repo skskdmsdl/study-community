@@ -27,4 +27,11 @@ public class ViewStudyController {
         map.addAttribute("studies", List.of());
         return "studies/detail";
     }
+
+    @GetMapping("/write")
+    public String write(ModelMap map, Authentication authentication) {
+
+        map.addAttribute("studies", List.of());
+        return "studies/write";
+    }
 }
