@@ -42,4 +42,14 @@ class ViewStudyControllerTest {
                 .andExpect(model().attributeExists("study"))
                 .andExpect(model().attributeExists("studyComments"));
     }
+
+    @DisplayName("[view][GET] 스터디 작성 페이지 - 정상 호출")
+    @Test
+    public void 스터디작성페이지_정상호출() throws Exception {
+        mockMvc.perform(get("/studies/write"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_HTML))
+                .andExpect(view().name("studies/write"))    // view 이름 테스트
+                .andExpect(model().attributeExists("studies"));
+    }
 }
