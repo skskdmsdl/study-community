@@ -18444,3 +18444,31 @@ ul {
     font-weight: 400;
     text-align: center;
 }
+
+.titleArea {
+    font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    border: none;
+    resize: none;
+    height: 39px;
+    min-height: 28px;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    overflow: hidden;
+    outline: 0px;
+}
+
+.contentArea {
+    width:100%;
+    min-height:500px;
+    visibility:hidden;
+}
+
+#submit-button, #cancel-button {
+    padding: 10px 20px;
+}
+
+/* ck editor */
+.ck-editor__editable { height: 400px; }
+.ck-content { font-size: 12px; }
+
