@@ -48,20 +48,20 @@
     <!-- <section> begin ============================-->
     <section class="pb-11 pt-7 bg-600">
 
-        <div class="container">
+        <div class="container z-index-1">
             <div class="row">
                 <div class="col-12">
                     <h6 class="font-sans-serif text-primary fw-bold">Course category</h6>
                     <h1 class="mb-6">Web Development</h1>
                     <form class="row g-3">
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-5 col-custom">
                             <label class="form-label" for="inputCategories">모집여부</label>
                             <select class="form-select" id="inputCategories">
                                 <option selected="selected">모집중</option>
                                 <option value="1">모집완료</option>
                             </select>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-5 col-custom">
                             <label class="form-label" for="inputLevel">주제</label>
                             <select class="form-select" id="inputLevel">
                                 <option selected="selected">All Level</option>
@@ -72,7 +72,7 @@
                                 <option value="5">코딩테스트</option>
                             </select>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-5 col-custom">
                             <label class="form-label" for="inputLanguage">Language</label>
                             <select class="form-select" id="inputLanguage">
                                 <option selected="selected">English</option>
@@ -80,13 +80,13 @@
                                 <option value="2">Hindi</option>
                             </select>
                         </div>
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-5 col-custom">
                             <label class="form-label" for="inputInstructor">Instructor</label>
                             <select class="form-select" id="inputInstructor">
                                 <option selected="selected">All Instructor </option>
                             </select>
                         </div>
-                        <div class="col-auto z-index-2">
+                        <div class="col-custom col-sm-5 mt-5">
                             <button class="btn btn-primary" type="submit">Submit</button>
                         </div>
                     </form>
@@ -105,9 +105,11 @@
     <!-- ============================================-->
     <!-- <section> begin ============================-->
     <section class="pb-0" style="margin-top:-17rem">
-
         <div class="container">
             <div class="row">
+                <div class="mb-sm-4" style="float: right;">
+                    <button class="btn btn-primary" style="float: right;" type="button">글쓰기</button>
+                </div>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100"><img class="card-img-top w-100" src="img/gallery/design.png" alt="courses" />
                         <div class="card-body">
