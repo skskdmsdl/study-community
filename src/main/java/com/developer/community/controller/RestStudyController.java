@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/studies")
+@RequestMapping("/studies/posts")
 @RestController
 @RequiredArgsConstructor
 public class RestStudyController {
