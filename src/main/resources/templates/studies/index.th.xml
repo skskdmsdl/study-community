@@ -8,7 +8,8 @@
         <!-- 0번째 tr을 선택해서 each문 돌림 -->
 <!--        <attr sel="tr[0]" th:each="article : ${articles}">-->
             <!-- td > title 클래스의 a 태그 선택 -->
-            <attr sel=".text-muted" th:href="@{'/studies/detail'}" />
+            <attr sel=".text-muted" th:href="@{/studies/detail}" />
+            <attr sel="#write" th:onclick="|location.href= '@{/studies/write}'|" />
 <!--            <attr sel=".text-muted" th:text="${article.title}" th:href="@{'/articles/' + ${article.id}}" />-->
 <!--            <attr sel="td.hashtag" th:text="${article.hashtag}" />-->
 <!--            <attr sel="td.user-id" th:text="${article.nickname}" />-->
