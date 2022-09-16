@@ -1,4 +1,9 @@
 <?xml version="1.0"?>
 <thlogic>
-    <attr sel="#cancel-button" th:onclick="'history.back()'" />
+    <attr sel="#study-form" th:action="'/studies/posts'" th:method="post">
+        <attr sel="#title" th:value="${study?.title} ?: _" />
+        <attr sel="#content" th:text="${study?.body} ?: _" />
+        <attr sel="#submit-button" />
+        <attr sel="#cancel-button" th:onclick="'history.back()'" />
+    </attr>
 </thlogic>
