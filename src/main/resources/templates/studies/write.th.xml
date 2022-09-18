@@ -2,7 +2,7 @@
 <thlogic>
     <attr sel="#study-form" th:action="'/studies/posts'" th:method="post">
         <attr sel="#title" th:value="${study?.title} ?: _" />
-        <attr sel="#content" th:text="${study?.body} ?: _" />
+        <attr sel="#editor" th:text="${study?.body} ?: _" />
         <attr sel="#submit-button" />
         <attr sel="#cancel-button" th:onclick="'history.back()'" />
     </attr>
