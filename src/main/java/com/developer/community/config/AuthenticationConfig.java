@@ -28,7 +28,7 @@ public class AuthenticationConfig {
         return http.csrf().disable()
                 .authorizeRequests()
                 .mvcMatchers("/user/join", "/user/login").permitAll()
-//                .antMatchers("/**").authenticated()
+                .antMatchers("/studies/write").authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
