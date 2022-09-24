@@ -1,10 +1,3 @@
-// function inputEvent(e) {
-//     if(e.key.match(/[^0-9]/g)){
-//         e.target.value =  e.target.value.replace(/[^0-9]/g, '');
-//     }
-// }
-
-
 // TODO : code develop 예정(alert 지우고 화면상에서 해결)-> 아이디 중복도 화면상 나타내기
 function joinBtn(){
     const password = $("#password").val();
