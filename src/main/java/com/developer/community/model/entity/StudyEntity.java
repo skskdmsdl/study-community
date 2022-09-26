@@ -27,6 +27,18 @@ public class StudyEntity {
     @Column(name = "body", columnDefinition = "TEXT")
     private String body;
 
+    @Column(name = "recruitment")   // 0이면 모집 중, 1이면 모집 완료
+    private Integer recruitment;
+
+    @Column(name = "subject")
+    private String subject;
+
+    @Column(name = "on_offline")   // 0이면 전체, 1이면 온라인, 2이면 오프라인
+    private Integer onOffline;
+
+    @Column(name = "member_count")
+    private Integer memberCount;
+
     @ManyToOne // 하나의 유저가 여러 post 쓸 수 있음
     @JoinColumn(name = "user_id")
     private UserEntity user;
@@ -43,6 +55,9 @@ public class StudyEntity {
     @PrePersist
     void registeredAt() {
         this.registeredAt = Timestamp.from(Instant.now());
+        this.recruitment = 0;
+        this.subject = "선택안함";
+        this.onOffline = 0;
     }
 
     @PreUpdate
