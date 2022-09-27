@@ -16,7 +16,7 @@ public class RestStudyController {
 
     @PostMapping
     public Response<Void> create(@RequestBody StudyCreateRequest request, Authentication authentication) {
-        studyService.create(request.getTitle(), request.getBody(), authentication.getName());
+        studyService.create(request.getTitle(), request.getBody(), request.getRecruitment(), request.getSubject(), request.getOnOffline(), request.getMemberCount(), authentication.getName());
         return Response.success();
     }
 

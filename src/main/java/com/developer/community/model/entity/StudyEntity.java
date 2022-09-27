@@ -65,10 +65,14 @@ public class StudyEntity {
         this.updatedAt = Timestamp.from(Instant.now());
     }
 
-    public static StudyEntity of(String title, String body, UserEntity userEntity) {
+    public static StudyEntity of(String title, String body, Integer recruitment, String subject, Integer onOffline, Integer memberCount, UserEntity userEntity) {
         StudyEntity entity = new StudyEntity();
         entity.setTitle(title);
         entity.setBody(body);
+        entity.setRecruitment(recruitment);
+        entity.setSubject(subject);
+        entity.setOnOffline(onOffline);
+        entity.setMemberCount(memberCount);
         entity.setUser(userEntity);
         return entity;
     }

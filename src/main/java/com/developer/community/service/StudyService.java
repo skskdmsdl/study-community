@@ -19,13 +19,13 @@ public class StudyService {
     private final UserEntityRepository userEntityRepository;
 
     @Transactional
-    public void create(String title, String body, String userName) {
+    public void create(String title, String body, Integer recruitment, String subject, Integer onOffline, Integer memberCount, String userName) {
         // user find
         UserEntity userEntity = userEntityRepository.findByUserName(userName).orElseThrow(() ->
                 new CommunityApplicationException(ErrorCode.USER_NOT_FOUND, String.format("%s not founded", userName)));
 
         // study post save
-        StudyEntity saved = studyEntityRepository.save(StudyEntity.of(title, body, userEntity));
+        StudyEntity saved = studyEntityRepository.save(StudyEntity.of(title, body, recruitment, subject, onOffline, memberCount, userEntity));
     }
 
 

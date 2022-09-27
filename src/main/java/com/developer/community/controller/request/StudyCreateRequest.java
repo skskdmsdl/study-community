@@ -8,4 +8,8 @@ import lombok.Getter;
 public class StudyCreateRequest {
     private String title;
     private String body;
+    private Integer recruitment;
+    private String subject;
+    private Integer onOffline;
+    private Integer memberCount;
 }
