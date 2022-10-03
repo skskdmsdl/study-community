@@ -29,21 +29,40 @@ function joinBtn(){
       password:$("#password").val()
     });
 
-    $.ajax({
+//    $.ajax({
+//        url: "/user/join",
+//        type: "POST",
+//        headers: headers,
+//        data: userInfo
+//    })
+//    .done(function(data) {
+//        console.log(data.resultCode);
+//        alert("로그인을 해주세요");
+//    })
+//    .fail(function(data, status, err) {
+//        if(data.responseJSON.resultCode = "DUPLICATED_USER_NAME") {
+//            alert("아이디가 중복됩니다.");
+//        }
+//        console.log(data);
+//    })
+
+    axios({
+        method: "post",
         url: "/user/join",
-        type: "POST",
         headers: headers,
         data: userInfo
     })
-    .done(function(data) {
-        console.log(data.resultCode);
+    .then((response) => {
+        alert("로그인을 해주세요");
+        console.log(response.resultCode);
     })
-    .fail(function(data, status, err) {
-        if(data.responseJSON.resultCode = "DUPLICATED_USER_NAME") {
+    .catch((error) => {
+        console.log(error);
+        if(error.response.resultCode = "DUPLICATED_USER_NAME") {
             alert("아이디가 중복됩니다.");
         }
-        console.log(data);
-    })
+        console.log(error);
+    });
     history.pushState(null, null, "/studies");
 
 }

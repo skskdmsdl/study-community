@@ -28,14 +28,12 @@ $("#login-btn").click(function() {
         method: "post",
         url: "/user/login",
         headers: headers,
-        data:{
-            loginInfo
-            }
-        })
-        .then((response) => {
-            alert(response);
-        })
-        .catch(() => {
-            alert("일치하는 회원정보가 없습니다.");
-        });
+        data: loginInfo
+    })
+    .then((response) => {
+        alert(response);
+    })
+    .catch(() => {
+        alert("일치하는 회원정보가 없습니다.");
+    });
 });
