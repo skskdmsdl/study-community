@@ -36,11 +36,11 @@ class RestStudyControllerTest {
         Integer onOffline = 0;
         Integer memberCount = 5;
 
-        mockMvc.perform(post("/studies/posts")
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content(objectMapper.writeValueAsBytes(new StudyCreateRequest(title, body, recruitment, subject, onOffline, memberCount)))
-                ).andDo(print())
-                .andExpect(status().isOk());
+//        mockMvc.perform(post("/studies/posts")
+//                    .contentType(MediaType.APPLICATION_JSON)
+//                    .content(objectMapper.writeValueAsBytes(new StudyCreateRequest(title, body, recruitment, subject, onOffline, memberCount)))
+//                ).andDo(print())
+//                .andExpect(status().isOk());
 
     }
 }
