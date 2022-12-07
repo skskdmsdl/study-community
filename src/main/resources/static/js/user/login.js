@@ -31,7 +31,8 @@ $("#login-btn").click(function() {
         data: loginInfo
     })
     .then((response) => {
-        alert(response);
+        localStorage.setItem('token', response.data.result.token);
+        console.log(response.data.result.token);
     })
     .catch(() => {
         alert("일치하는 회원정보가 없습니다.");
