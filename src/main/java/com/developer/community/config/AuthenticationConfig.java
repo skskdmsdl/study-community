@@ -27,8 +27,9 @@ public class AuthenticationConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
                 .authorizeRequests()
-                .mvcMatchers("/user/join", "/user/login").permitAll()
+                .antMatchers("/user/**").authenticated()
                 .antMatchers("/studies/write").authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
