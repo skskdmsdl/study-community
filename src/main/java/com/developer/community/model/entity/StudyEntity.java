@@ -1,7 +1,9 @@
 package com.developer.community.model.entity;
 
 import com.developer.community.model.User;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -16,6 +18,7 @@ import java.time.Instant;
 @Setter
 @SQLDelete(sql = "UPDATE study SET deleted_at = NOW() where id=?")
 @Where(clause = "deleted_at is NULL")
+@NoArgsConstructor
 public class StudyEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,7 +68,8 @@ public class StudyEntity {
         this.updatedAt = Timestamp.from(Instant.now());
     }
 
-    public static StudyEntity of(String title, String body, Integer recruitment, String subject, Integer onOffline, Integer memberCount, UserEntity userEntity) {
+    public static StudyEntity of(String title, String body, Integer recruitment, String subject, Integer onOffline,
+                                 Integer memberCount, UserEntity userEntity) {
         StudyEntity entity = new StudyEntity();
         entity.setTitle(title);
         entity.setBody(body);
@@ -75,5 +79,18 @@ public class StudyEntity {
         entity.setMemberCount(memberCount);
         entity.setUser(userEntity);
         return entity;
+    }
+
+    @Builder
+    public StudyEntity(String title, String body, Integer recruitment, String subject, Integer onOffline,
+                               Integer memberCount, UserEntity userEntity) {
+        this.title = title;
+        this.body = body;
+        this.recruitment = recruitment;
+        this.subject = subject;
+        this.onOffline = onOffline;
+        this.memberCount = memberCount;
+        this.user = userEntity;
+
     }
 }
