@@ -1,5 +1,8 @@
 # study-community
 
+## 소개
+it 스터디원을 모으는 웹 사이트 
+
 ## 개발 환경
 * Intellij IDEA Community
 * Java 17
