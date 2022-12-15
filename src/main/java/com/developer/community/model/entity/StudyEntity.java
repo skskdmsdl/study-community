@@ -93,4 +93,14 @@ public class StudyEntity {
         this.user = userEntity;
 
     }
+
+    // study update
+    public void updateStudy(String title, String body, Integer recruitment, String subject, Integer onOffline, Integer memberCount) {
+        this.title = title;
+        this.body = body;
+        this.recruitment = recruitment;
+        this.subject = subject;
+        this.onOffline = onOffline;
+        this.memberCount = memberCount;
+    }
 }
